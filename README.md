@@ -42,3 +42,24 @@ for(i in 1:3151){
   }
 
 }
+
+new <- array(0,c(3151:17))
+
+for(i in 1:3151){
+
+for(j in 1:17){
+
+cond = tryCatch({
+    list(test[[i]][[j]])  # Efficiency if element does exist and is large??
+    TRUE
+  }, error = function(e) {
+    FALSE
+  })
+
+if(cond){
+new[i,j] <- test[[i]][[j]]
+}
+
+}
+
+}
