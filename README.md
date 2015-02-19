@@ -27,13 +27,23 @@ connections <- getMyConnections(token)
 Getting Profiles of connections,
 
 n <- n + 1
+
 new <- array(0,c(3151:17))
+
 for(i in 1:3151){
+
   if( my[i,1] != "private" ){
+
     profile <- getProfile(authtoken,id=connections[i,1])
+
     for(j in 1:17){
+
       new[n,j] <- profile[[1]][[j]]
+
     }
+
     n = n +1
+
   }
+
 }
