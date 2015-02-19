@@ -9,7 +9,6 @@ Procedure to authorize Rlinkedin package
 
 4- require(Rlinkedin)
 
-
 5- require(ROAuth)
 
 6- linkedin <- oauth_endpoint("requestToken", "authorize", "accessToken", base_url = "https://api.linkedin.com/uas/oauth/")
@@ -28,33 +27,15 @@ Getting Profiles of connections,
 
 n <- n + 1
 
-new <- array(0,c(3151:17))
+new <- array()
 
 for(i in 1:3151){
 
-  if( my[i,1] != "private" ){
+  if( connections[i,1] != "private" ){
 
     profile <- getProfile(token,id=connections[i,1])
 
-    for(j in 1:17){
-    
-      cond <- tryCatch({
-      
-        list(profile[[1]][[j]])
-      
-          TRUE
-      
-      }, error = function(e) {
-      
-          FALSE
-      
-      })
-
-      if(cond){
-        new[n,j] <- profile[[1]][[j]]
-      }
-      
-    }
+    new[n] <- profile[[1]][[j]]
 
     n = n +1
 
