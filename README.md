@@ -34,12 +34,26 @@ for(i in 1:3151){
 
   if( my[i,1] != "private" ){
 
-    profile <- getProfile(authtoken,id=connections[i,1])
+    profile <- getProfile(token,id=connections[i,1])
 
     for(j in 1:17){
+    
+      cond <- tryCatch({
+      
+        list(profile[[1]][[j]])
+      
+          TRUE
+      
+      }, error = function(e) {
+      
+          FALSE
+      
+      })
 
-      new[n,j] <- profile[[1]][[j]]
-
+      if(cond){
+        new[n,j] <- profile[[1]][[j]]
+      }
+      
     }
 
     n = n +1
