@@ -16,7 +16,7 @@ Procedure to authorize Rlinkedin package
 
 7- myapp <- oauth_app("linkedin", key = "your_api_key", secret = "your_api_secret")
 
-8- token <- oauth1.0_token(linkedin, myapp)
+8- token <- oauth1.0_token(linkedin, myapp,cache=FALSE)
 
 9- sig <- sign_oauth1.0(myapp, token$oauth_token, token$oauth_token_secret)
 
